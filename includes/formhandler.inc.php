@@ -30,7 +30,8 @@ if($_POST["pwd"] !== $_POST["pwdAgain"]) {//invalidate signup if passwords don't
         //select existing rows from db with same used username/email to prevent duplicates
         $counter = 0;
 
-        $stmt = $pdo->query("SELECT username, password, date FROM siteUsers WHERE (email='$email' OR username='$username') AND confirmed=1");
+        $stmt = $pdo->prepare("SELECT username, password FROM siteUsers WHERE (email=? OR username=?) AND confirmed=1");
+        $stmt->execute([$email, $username]);
         while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
             $counter = $counter + 1;  
         }
@@ -78,6 +79,10 @@ if($_POST["pwd"] !== $_POST["pwdAgain"]) {//invalidate signup if passwords don't
         } catch (Exception $e) {
             $returnMessage = "Confirmation could not be sent: [$mail->ErrorInfo]";
         }
+
+
+        $pdo = null;
+        $stmt = null;
         
 
     } catch(PDOException $e) {

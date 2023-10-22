@@ -2,20 +2,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Source+Serif+4:opsz@8..60&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com"> 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 <style>
 
 body {
     position: relative;
     font-family: 'Source Serif 4', serif;
+    height: 100%; width: 100%; margin: 0;
     background: gray;
 
     
 }
 
 h1 {
+    position: relative;
+ 
     font-family: 'Instrument Serif', serif;
     font-style: italic;
     font-size: 100px;
@@ -26,22 +27,21 @@ h1 {
 
 .square {
     position: absolute;
-    top: 50%;
+    top: 48%;
     left: 50%;
-    transform: translate(-50%, 25%);
+    transform: translateX(-50%);
     display: flex;   
     justify-content: center;
     align-items: center;
     width: 30%;
     height: 10%;
-    border:1px solid black;
     background:    #262626;
 
 }
 
 .returnMessage{
     position: absolute;
-    top: 73%;
+    top: 70%;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -73,6 +73,8 @@ h1 {
     text-align: center; 
     width: 100%;
     height: 40%;
+    
+
 }
 .form button {
     position: relative;
@@ -83,7 +85,7 @@ h1 {
     width: 100%; 
     height: 40%;
     
-    top: 1%;
+    top: 13%;
     
 
 }
@@ -92,38 +94,43 @@ h1 {
     width: 50%;
     height: 2%;
 
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    
     position: absolute;
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     
     background-color:  #8f8f8f;
     border: solid black;
-    border-width: 0.5px;
-
+    border-width: 0.5px; 
 }
+
 </style>
 
 
 
-<div class="rectangle"><h1>sign up</h1>  </div>
+
 <body>
 
-    
+    <div class="rectangle"><h1>login</h1>  </div>
     
     <div class = "square">
         <div class="form">
-            <form class="login" action="includes/formhandler.inc.php" method="POST">
-                <input type="text" name="email" placeholder="Email">
-                <input type="text" name="user" placeholder="Username">
-                <input type="password" name="pwd" placeholder="Password">
-                <input type="password" name="pwdAgain" placeholder="Password Again">   
+            <form class="login" action="includes/verificationlogin.inc.php" method="POST">
+
+
+                <div class="textboxes">
+                    <input type="text" name="user" placeholder="Username or Email">
+                    <input type="password" name="pwd" placeholder="Password">
+                </div>
+
+            
+
+
                 <button>Submit</button>
             </form>
 

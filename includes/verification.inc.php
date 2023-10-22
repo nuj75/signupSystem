@@ -12,7 +12,8 @@ try { //try block to catch errors for db conn
     $token = $_GET['token'];
 
     //update confirmation of account in db
-    $stmt = $pdo->query("UPDATE siteUsers SET confirmed = 1, token = NULL WHERE email = '".$email."' AND token = '".$token."';");
+    $stmt = $pdo->prepare("UPDATE siteUsers SET confirmed = 1, token = NULL WHERE email = ? AND token = ?;");
+    $stmt->execute([$email, $token]);
     
     $returnMessage = "Account successfully made.";
 
